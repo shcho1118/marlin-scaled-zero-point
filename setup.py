@@ -9,8 +9,9 @@ setup(
     description='Highly optimized FP16xINT4 CUDA matmul kernel.',
     install_requires=['numpy', 'torch'],
     packages=['marlin'],
-    ext_modules=[cpp_extension.CUDAExtension(
-        'marlin_cuda', ['marlin/marlin_cuda.cpp', 'marlin/marlin_cuda_kernel.cu']
-    )],
+    ext_modules=[
+        cpp_extension.CUDAExtension('marlin_cuda', ['marlin/marlin_cuda.cpp', 'marlin/marlin_cuda_kernel.cu']),
+        cpp_extension.CUDAExtension('marlin_sz_cuda', ['marlin/marlin_sz_cuda.cpp', 'marlin/marlin_sz_cuda_kernel.cu']),
+    ],
     cmdclass={'build_ext': cpp_extension.BuildExtension},
 )
